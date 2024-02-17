@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,18 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <Link className="mr-4" href={"/auth"}>
+            Auth Page
+          </Link>
+          <Link className="mr-4" href={"/anyone-can-visit-this-route"}>
+            Anyone Can Visit This Route
+          </Link>
+          <Link className="mr-4" href={"/no-auth-in-this-route"}>
+            No Auth In This Route
+          </Link>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
